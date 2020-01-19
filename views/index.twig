@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    {% if status == 'error' %}
+        <p><B>Error: </B>Look app console for details</p>
+    {% else %}
+        <h3>Игроки со статусом <b>On</b></h3>
+        <table border="1" cellpadding="5" cellspacing="2">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ник</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.login }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
