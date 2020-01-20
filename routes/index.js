@@ -47,6 +47,11 @@ fs.createReadStream('public/upload/report.csv')
 router.get('/', (req, res) => {
     Users.findAll({
         where: { status: 1 },
+        order: [
+            [
+                'registred', 'DESC'
+            ]
+        ],
         raw: true
     }).then(data => {
         res.render('index', { status: 'success', users: data });
